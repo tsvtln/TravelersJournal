@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Delete Traveler's Profile - Travelers Hub{% endblock %}
+
+{% block content %}
+    <main>
+        <section id="delete">
+            <div class="form">
+                    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+                    <link rel="stylesheet" href="{% static 'styles/details.css' %}">
+                <h2>Are you sure you want to delete your profile?</h2>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock %}

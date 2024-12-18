@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Travelers Hub - Share your trips and explore the world!">
+    <title>{% block title %}Travelers Hub{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/dashboard.css' %}">
+</head>
+<body>
+<header>
+    <a href="{% url 'index' %}" id="logo">
+        <img src="{% static 'images/logo-boeing.png' %}" alt="Travelers Hub Logo" id="logo-img">
+    </a>
+    <nav>
+        {% if traveler_exists %}
+            <div class="user">
+                <a href="{% url 'all_trips' %}">All Trips</a>
+                <a href="{% url 'create_trip' %}">Share Trip</a>
+                <a href="{% url 'traveler_details' %}">Traveler's Profile</a>
+            </div>
+        {% else %}
+            <div class="guest">
+                <a href="{% url 'create_traveler' %}">New Traveler's Profile</a>
+            </div>
+        {% endif %}
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p>© 2024 Travelers Hub by SoftUni Team. All rights reserved.</p>
+</footer>
+</body>
+</html>

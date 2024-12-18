@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit Trip - Travelers Hub{% endblock %}
+
+{% block content %}
+    <main>
+        <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/form.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/variables.css' %}">
+        <section id="edit">
+            <div class="form">
+                <h2>Edit Trip</h2>
+                <form class="edit-form" method="post" action="">
+                    {% csrf_token %}
+
+                    <div>
+                        <label for="id_destination">{{ form.destination.label }}</label>
+                        {{ form.destination }}
+                        {% if form.destination.errors %}
+                            <div class="error">{{ form.destination.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="id_summary">{{ form.summary.label }}</label>
+                        {{ form.summary }}
+                        {% if form.summary.errors %}
+                            <div class="error">{{ form.summary.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="id_start_date">{{ form.start_date.label }}</label>
+                        {{ form.start_date }}
+                        {% if form.start_date.errors %}
+                            <div class="error">{{ form.start_date.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="id_duration">{{ form.duration.label }}</label>
+                        {{ form.duration }}
+                        <div class="helptext">{{ form.duration.help_text }}</div>
+                        {% if form.duration.errors %}
+                            <div class="error">{{ form.duration.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="id_image_url">{{ form.image_url.label }}</label>
+                        {{ form.image_url }}
+                        {% if form.image_url.errors %}
+                            <div class="error">{{ form.image_url.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock %}

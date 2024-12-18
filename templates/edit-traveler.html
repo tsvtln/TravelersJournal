@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit Traveler's Profile - Travelers Hub{% endblock %}
+
+{% block content %}
+    <main>
+        <section id="edit">
+            <div class="form">
+                <h2>Edit Traveler's Profile</h2>
+                    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+                    <link rel="stylesheet" href="{% static 'styles/form.css' %}">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div>
+                        <label for="id_nickname">{{ form.nickname.label }}</label>
+                        {{ form.nickname }}
+                        <div class="helptext">{{ form.nickname.help_text }}</div>
+                    </div>
+
+                    <div>
+                        <label for="id_email">{{ form.email.label }}</label>
+                        {{ form.email }}
+                    </div>
+
+                    <div>
+                        <label for="id_country">{{ form.country.label }}</label>
+                        {{ form.country }}
+                    </div>
+
+                    <div>
+                        <label for="id_about_me">{{ form.about_me.label }}</label>
+                        {{ form.about_me }}
+                    </div>
+
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock %}

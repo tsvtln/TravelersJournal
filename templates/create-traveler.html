@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Traveler's Profile - Travelers Hub{% endblock %}
+
+{% block content %}
+    <main>
+        <section id="register">
+            <div class="form">
+                <h2>New Traveler's Profile</h2>
+                <form class="register-form" method="post" action="">
+                    {% csrf_token %}
+
+                    <div>
+                        <label for="id_nickname">{{ form.nickname.label }}</label>
+                        <div class="helptext">{{ form.nickname.help_text }}</div>
+                        {{ form.nickname }}
+                        {% if form.nickname.errors %}
+                            <div class="error">{{ form.nickname.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="id_email">{{ form.email.label }}</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="error">{{ form.email.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="id_country">{{ form.country.label }}</label>
+                        {{ form.country }}
+                        {% if form.country.errors %}
+                            <div class="error">{{ form.country.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock %}

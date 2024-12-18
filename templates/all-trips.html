@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}All Trips - Travelers Hub{% endblock %}
+
+{% block content %}
+    <main>
+        {% if trips.exists %}
+            <h2>{{ trips.count }} Shared Trips</h2>
+                <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+                <link rel="stylesheet" href="{% static 'styles/details.css' %}">
+            <section id="dashboard">
+                {% for trip in trips %}
+                    <div class="post">
+                        <img src="
+                                {% if trip.image_url %}{{ trip.image_url }}{% else %}{% static 'images/default-trip.jpg' %}{% endif %}"
+                             alt="{{ trip.destination }} img"/>
+
+                        <h3 class="title">{{ trip.destination }}</h3>
+                        <p class="description">{{ trip.start_date|date:"D d M Y" }}</p>
+                        <a class="details-btn" href="{% url 'trip_details' trip.pk %}">Details</a>
+                    </div>
+                {% endfor %}
+            </section>
+        {% else %}
+            <h2>No shared trips</h2>
+        {% endif %}
+    </main>
+{% endblock %}

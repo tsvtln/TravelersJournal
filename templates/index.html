@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/details.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/variables.css' %}">
+
+
+    <title>Travelers Hub</title>
+</head>
+<body>
+<header>
+    <a href="{% url 'index' %}" id="logo">
+        <img src="{% static 'images/logo-boeing.png' %}" alt="Travelers Hub Logo" id="logo-img">
+    </a>
+    <nav>
+        {% if traveler_exists %}
+            <div class="user">
+                <a href="{% url 'all_trips' %}">All Trips</a>
+                <a href="{% url 'create_trip' %}">Share Trip</a>
+                <a href="{% url 'traveler_details' %}">Traveler's Profile</a>
+            </div>
+        {% else %}
+            <div class="guest">
+                <a href="{% url 'create_traveler' %}">New Traveler's Profile</a>
+            </div>
+        {% endif %}
+    </nav>
+</header>
+<main>
+    <section id="welcome-section">
+        <h1>Wander, Explore, Share...</h1>
+        <img src="{% static 'images/logo-img-trip.png' %}" alt="Welcome to Travelers Hub" id="welcome-img">
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Travelers Hub by SoftUni Team. All rights reserved.</p>
+</footer>
+</body>
+</html>
